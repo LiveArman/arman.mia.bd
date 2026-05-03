@@ -1,1 +1,811 @@
-welcome to arman.mia.bd 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us – Service Arman</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<style>
+  :root {
+    --gold: #CA9B3A;
+    --gold-light: #E8B84B;
+    --gold-dim: rgba(202,155,58,0.12);
+    --bg: #0D0D0D;
+    --bg2: #141414;
+    --bg3: #1A1A1A;
+    --border: rgba(255,255,255,0.07);
+    --text: #F0EDE6;
+    --muted: #888880;
+    --white: #FFFFFF;
+    --radius: 14px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  a { color: var(--gold); text-decoration: none; }
+  a:hover { color: var(--gold-light); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    padding: 100px 24px 80px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(202,155,58,0.13) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: var(--gold-dim);
+    border: 1px solid rgba(202,155,58,0.25);
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 800;
+    color: var(--white);
+    max-width: 820px;
+    margin: 0 auto 20px;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-desc {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 580px;
+    margin: 0 auto 36px;
+    font-weight: 300;
+  }
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    padding: 7px 16px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--text);
+  }
+  .badge i { color: var(--gold); font-size: 11px; }
+
+  /* ── SECTION WRAPPER ── */
+  .section {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 72px 24px;
+  }
+  .section + .section {
+    border-top: 1px solid var(--border);
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(26px, 4vw, 40px);
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 18px;
+  }
+  .section-title span { color: var(--gold); }
+  .section-body {
+    font-size: 16px;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 700px;
+  }
+  .section-body p + p { margin-top: 14px; }
+
+  /* ── WHO WE ARE ── */
+  .who-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-top: 40px;
+  }
+  @media (max-width: 680px) {
+    .who-grid { grid-template-columns: 1fr; }
+  }
+  .who-visual {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .stat-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+  }
+  .stat-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label { font-size: 13px; color: var(--muted); padding-bottom: 4px; }
+
+  /* ── SERVICES GRID ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .service-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .service-card:hover {
+    border-color: rgba(202,155,58,0.35);
+    background: var(--bg3);
+  }
+  .service-icon {
+    width: 42px; height: 42px;
+    background: var(--gold-dim);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 14px;
+    font-size: 18px;
+    color: var(--gold);
+  }
+  .service-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+    font-family: 'Syne', sans-serif;
+  }
+  .service-card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* ── MISSION / VISION ── */
+  .mv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 40px;
+  }
+  @media (max-width: 580px) { .mv-grid { grid-template-columns: 1fr; } }
+  .mv-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+  }
+  .mv-card.highlight {
+    border-color: rgba(202,155,58,0.3);
+    background: linear-gradient(135deg, rgba(202,155,58,0.07) 0%, var(--bg2) 60%);
+  }
+  .mv-card .mv-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: var(--gold-dim);
+    border-radius: 100px;
+    padding: 4px 12px;
+    margin-bottom: 14px;
+  }
+  .mv-card h3 {
+    font-size: 20px;
+    color: var(--white);
+    margin-bottom: 10px;
+    font-family: 'Syne', sans-serif;
+  }
+  .mv-card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── VALUES ── */
+  .values-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 40px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .value-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 22px 28px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+  .value-row:last-child { border-bottom: none; }
+  .value-row:hover { background: var(--bg3); }
+  .value-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold);
+    min-width: 28px;
+    padding-top: 3px;
+  }
+  .value-content h4 {
+    font-size: 15px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .value-content p {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  /* ── PAYMENT ── */
+  .payment-methods {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .pm-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 16px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+  }
+  .pm-badge i { color: var(--gold); }
+
+  /* ── TEAM / FOUNDER ── */
+  .founder-card {
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-top: 40px;
+  }
+  @media (max-width: 580px) { .founder-card { flex-direction: column; } }
+  .founder-avatar {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: var(--gold-dim);
+    border: 2px solid rgba(202,155,58,0.4);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .founder-info h3 {
+    font-size: 20px;
+    color: var(--white);
+    margin-bottom: 4px;
+    font-family: 'Syne', sans-serif;
+  }
+  .founder-title {
+    font-size: 13px;
+    color: var(--gold);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .founder-bio {
+    font-size: 14px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .founder-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .founder-tags span {
+    font-size: 11px;
+    padding: 4px 10px;
+    background: var(--gold-dim);
+    border-radius: 100px;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── LICENSE NOTICE ── */
+  .license-box {
+    background: var(--bg2);
+    border: 1px solid rgba(202,155,58,0.25);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-top: 40px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .license-icon {
+    font-size: 22px;
+    color: var(--gold);
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .license-box h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+    font-family: 'Syne', sans-serif;
+  }
+  .license-box p {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 40px;
+  }
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+  }
+  .contact-item i {
+    color: var(--gold);
+    font-size: 16px;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+  .contact-item .ci-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+  .contact-item .ci-value {
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 500;
+    word-break: break-all;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    text-align: center;
+    padding: 80px 24px;
+    border-top: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 500px; height: 400px;
+    background: radial-gradient(circle, rgba(202,155,58,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-section h2 {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 800;
+    color: var(--white);
+    max-width: 600px;
+    margin: 0 auto 16px;
+  }
+  .cta-section h2 span { color: var(--gold); }
+  .cta-section p {
+    font-size: 16px;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 32px;
+  }
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold);
+    color: #0D0D0D;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 13px 28px;
+    border-radius: 10px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--gold-light); color: #0D0D0D; transform: translateY(-1px); }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--text);
+    font-weight: 500;
+    font-size: 14px;
+    padding: 13px 28px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-outline:hover { border-color: rgba(202,155,58,0.4); background: var(--bg3); color: var(--text); }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════ HERO ════════════════════ -->
+<section class="hero">
+  <div class="hero-eyebrow">
+    <i class="fas fa-shield-halved"></i>
+    Trusted Since 2022
+  </div>
+  <h1>Your Trusted Partner for <span>Complete Digital Solutions</span></h1>
+  <p class="hero-desc">
+    Service Arman is Bangladesh's all-in-one digital services shop — built to make professional web solutions accessible, affordable, and reliable for everyone.
+  </p>
+  <div class="hero-badges">
+    <span class="badge"><i class="fas fa-circle-check"></i> Government-Registered Freelancer</span>
+    <span class="badge"><i class="fas fa-circle-check"></i> 3+ Years in Business</span>
+    <span class="badge"><i class="fas fa-circle-check"></i> Bangladesh Bank Regulated Payments</span>
+    <span class="badge"><i class="fas fa-circle-check"></i> 100% Refund Guarantee</span>
+  </div>
+</section>
+
+<!-- ════════════════════ WHO WE ARE ════════════════════ -->
+<div class="section">
+  <p class="section-label">Who We Are</p>
+  <h2 class="section-title">One Shop. Every Digital <span>Need.</span></h2>
+  <div class="who-grid">
+    <div class="section-body">
+      <p>
+        Service Arman is a professional digital services company based in Noakhali, Bangladesh. We started in February 2022 with a simple goal — to make professional-quality web solutions available to businesses and individuals across Bangladesh and beyond, without the high cost or complexity.
+      </p>
+      <p>
+        From a single domain registration to a fully custom e-commerce website, we handle every part of your digital journey. Whether you are a small business owner just getting started online, or an established brand looking to grow, we are here to deliver results.
+      </p>
+      <p>
+        We operate as a government-registered freelance business under Bangladesh's ICT Division (Freelancer ID: F126758005071), which means you can trust us with full confidence that we are a legitimate, accountable service provider.
+      </p>
+    </div>
+    <div class="who-visual">
+      <div class="stat-row">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Years of active service</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Clients served across Bangladesh</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Digital service categories</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Refund guarantee on every order</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ SERVICES ════════════════════ -->
+<div class="section">
+  <p class="section-label">What We Offer</p>
+  <h2 class="section-title">Everything You Need to <span>Succeed Online</span></h2>
+  <p class="section-body">From domain registration to full-scale website development, SEO, and digital tools — we offer a complete range of services under one roof.</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-globe"></i></div>
+      <h4>Domain & Hosting</h4>
+      <p>Register .com, .net, .bd and more at competitive prices. Hosting packages powered by Hostinger for lightning-fast speed and reliability.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fab fa-wordpress"></i></div>
+      <h4>WordPress Website Design</h4>
+      <p>Custom-designed WordPress websites for businesses, portfolios, blogs, and e-commerce stores. Clean code, mobile-first, SEO-ready.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-store"></i></div>
+      <h4>E-commerce Solutions</h4>
+      <p>WooCommerce-powered online shops with payment gateway integration, product management, and a seamless checkout experience.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+      <h4>SEO Optimization</h4>
+      <p>On-page and technical SEO to help your website rank higher on Google and attract the right customers organically.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-envelope"></i></div>
+      <h4>Business Email Setup</h4>
+      <p>Professional business email addresses with your own domain (you@yourcompany.com) — inbox, aliases, and full configuration included.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-shield-virus"></i></div>
+      <h4>Hacked Website Recovery</h4>
+      <p>If your WordPress site is hacked or malware-infected, we diagnose and fully restore it — fast, thorough, and secure.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-bolt"></i></div>
+      <h4>Premium Plugins & Themes</h4>
+      <p>Genuine licensed access to Elementor Pro, Astra Pro, WP Rocket, and starter templates — all activated on your website.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-credit-card"></i></div>
+      <h4>Payment Gateway Integration</h4>
+      <p>bKash, Nagad, EPS, SSL Commerz and international card payment integration for your website — including USD payment receiving.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
+      <h4>Facebook Boost & Ads</h4>
+      <p>Facebook post boosting and ad account services to grow your page's reach and bring real customers to your business.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ MISSION & VISION ════════════════════ -->
+<div class="section">
+  <p class="section-label">Purpose & Direction</p>
+  <h2 class="section-title">Our Mission & <span>Vision</span></h2>
+  <div class="mv-grid">
+    <div class="mv-card highlight">
+      <span class="mv-tag">Mission</span>
+      <h3>Making Digital Growth Accessible</h3>
+      <p>Our mission is to remove the barriers between everyday people and professional digital solutions. We believe every business — no matter how small — deserves a strong, functional online presence. We make that possible through affordable pricing, transparent processes, and genuinely helpful support.</p>
+    </div>
+    <div class="mv-card">
+      <span class="mv-tag">Vision</span>
+      <h3>Bangladesh's Most Trusted Digital Partner</h3>
+      <p>Our vision is to become the most trusted name in digital services across Bangladesh — a company where clients return again and again because they know the work will be done right, their money is protected, and their growth is our priority.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ VALUES ════════════════════ -->
+<div class="section">
+  <p class="section-label">What We Stand For</p>
+  <h2 class="section-title">Our Core <span>Values</span></h2>
+  <p class="section-body">Every decision we make — from how we price our services to how we protect your payment — is guided by these values.</p>
+
+  <div class="values-list">
+    <div class="value-row">
+      <div class="value-num">01</div>
+      <div class="value-content">
+        <h4>Transparency</h4>
+        <p>No hidden fees. No vague timelines. No confusing terms. What you see is what you get — every service has a clear scope, a clear price, and a clear delivery process.</p>
+      </div>
+    </div>
+    <div class="value-row">
+      <div class="value-num">02</div>
+      <div class="value-content">
+        <h4>Customer Protection First</h4>
+        <p>We use Bangladesh Bank-regulated EPS payment gateway so your money is held safely until you confirm the service is delivered. If we fail to deliver, you get 100% of your money back — no arguments, no delays.</p>
+      </div>
+    </div>
+    <div class="value-row">
+      <div class="value-num">03</div>
+      <div class="value-content">
+        <h4>Quality Without Compromise</h4>
+        <p>Whether you are paying ৳300 for a plugin activation or ৳5,000 for a hosted website, our attention to quality does not change. Every order is handled with the same care and professionalism.</p>
+      </div>
+    </div>
+    <div class="value-row">
+      <div class="value-num">04</div>
+      <div class="value-content">
+        <h4>Fast, Honest Communication</h4>
+        <p>We respond quickly — on WhatsApp, Messenger, and email. And we are honest about what we can and cannot do. We would rather tell you the truth upfront than make a promise we cannot keep.</p>
+      </div>
+    </div>
+    <div class="value-row">
+      <div class="value-num">05</div>
+      <div class="value-content">
+        <h4>Long-Term Partnership</h4>
+        <p>We do not just sell a service and disappear. We build ongoing relationships with our clients — being available after delivery, supporting updates, and growing with your business over time.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ PAYMENT ════════════════════ -->
+<div class="section">
+  <p class="section-label">How You Can Pay</p>
+  <h2 class="section-title">Secure Payment, <span>Your Way</span></h2>
+  <p class="section-body">
+    All payments on Service Arman are processed through <strong style="color: var(--text); font-weight: 500;">EPS (Easy Payment System)</strong> — a gateway officially regulated by <strong style="color: var(--text); font-weight: 500;">Bangladesh Bank</strong>. Your money is held securely for 24 hours after payment. You only release it once you are satisfied with the service. If anything goes wrong, your full refund is guaranteed.
+  </p>
+  <div class="payment-methods">
+    <span class="pm-badge"><i class="fas fa-mobile-screen"></i> bKash</span>
+    <span class="pm-badge"><i class="fas fa-mobile-screen"></i> Nagad</span>
+    <span class="pm-badge"><i class="fas fa-mobile-screen"></i> Rocket</span>
+    <span class="pm-badge"><i class="fas fa-credit-card"></i> Visa / MasterCard</span>
+    <span class="pm-badge"><i class="fas fa-qrcode"></i> BanglaQR</span>
+    <span class="pm-badge"><i class="fas fa-wallet"></i> TallyPay</span>
+    <span class="pm-badge"><i class="fas fa-arrow-right-arrow-left"></i> Binimoy</span>
+    <span class="pm-badge"><i class="fas fa-building-columns"></i> NPSB</span>
+    <span class="pm-badge"><i class="fab fa-bitcoin"></i> Binance / USDT</span>
+  </div>
+</div>
+
+<!-- ════════════════════ FOUNDER ════════════════════ -->
+<div class="section">
+  <p class="section-label">Behind the Brand</p>
+  <h2 class="section-title">Meet the <span>Founder</span></h2>
+  <p class="section-body">Service Arman is built and operated by a single dedicated professional who brings years of real experience to every project.</p>
+
+  <div class="founder-card">
+    <div class="founder-avatar">MA</div>
+    <div class="founder-info">
+      <h3>Mohammad Arman</h3>
+      <p class="founder-title">Founder & Lead Web Specialist · Service Arman</p>
+      <p class="founder-bio">
+        Mohammad Arman is a professional Web Designer, SEO Expert, and AI specialist based in Noakhali, Bangladesh. With over five years of hands-on experience, he has worked with local and international clients — from individuals launching their first website to businesses scaling their digital operations.
+        <br><br>
+        He holds an official freelancer registration from Bangladesh's ICT Division (ID: F126758005071), reflecting his commitment to running a legitimate, professional, and accountable business. He publishes bilingual (Bengali and English) articles on web development and technology at arman.bd/posts.
+      </p>
+      <div class="founder-tags">
+        <span>WordPress Expert</span>
+        <span>SEO Strategist</span>
+        <span>AI Integration</span>
+        <span>Payment Gateway Dev</span>
+        <span>WooCommerce</span>
+        <span>Freelancer ID: F126758005071</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="license-box">
+    <div class="license-icon"><i class="fas fa-file-certificate"></i></div>
+    <div>
+      <h4>Trade License &amp; Legal Registration</h4>
+      <p>Service Arman operates as a legally registered business. Our official Trade Licence is issued under Bangladesh government authority and is available for verification. We are also registered as a freelancer under the ICT Division of Bangladesh (Freelancer ID: F126758005071). You can view our Trade Licence at <a href="https://arman.bd/tl" target="_blank">arman.bd/tl</a>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ CONTACT ════════════════════ -->
+<div class="section">
+  <p class="section-label">Get in Touch</p>
+  <h2 class="section-title">We're Always <span>Here for You</span></h2>
+  <p class="section-body">Have a question, a project in mind, or just need advice on which service is right for you? Reach out through any of the channels below — we respond fast.</p>
+
+  <div class="contact-grid">
+    <div class="contact-item">
+      <i class="fas fa-phone"></i>
+      <div>
+        <p class="ci-label">Phone / WhatsApp</p>
+        <p class="ci-value">+880 1974-946747</p>
+      </div>
+    </div>
+    <div class="contact-item">
+      <i class="fas fa-envelope"></i>
+      <div>
+        <p class="ci-label">Email</p>
+        <p class="ci-value">service@arman.bd</p>
+      </div>
+    </div>
+    <div class="contact-item">
+      <i class="fab fa-facebook-messenger"></i>
+      <div>
+        <p class="ci-label">Messenger</p>
+        <p class="ci-value">m.me/service.arman</p>
+      </div>
+    </div>
+    <div class="contact-item">
+      <i class="fab fa-facebook"></i>
+      <div>
+        <p class="ci-label">Facebook Page</p>
+        <p class="ci-value">fb.com/service.arman</p>
+      </div>
+    </div>
+    <div class="contact-item">
+      <i class="fas fa-globe"></i>
+      <div>
+        <p class="ci-label">Shop</p>
+        <p class="ci-value">shop.arman.bd</p>
+      </div>
+    </div>
+    <div class="contact-item">
+      <i class="fas fa-location-dot"></i>
+      <div>
+        <p class="ci-label">Location</p>
+        <p class="ci-value">Noakhali, Bangladesh</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ CTA ════════════════════ -->
+<section class="cta-section">
+  <h2>Ready to Build Something <span>Great?</span></h2>
+  <p>Let's work together on your next digital project — fast, professional, and fully guaranteed.</p>
+  <div class="cta-buttons">
+    <a href="https://wa.me/8801974946747" class="btn-primary"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+    <a href="https://shop.arman.bd" class="btn-outline"><i class="fas fa-store"></i> Browse Services</a>
+  </div>
+</section>
+
+</body>
+</html>
